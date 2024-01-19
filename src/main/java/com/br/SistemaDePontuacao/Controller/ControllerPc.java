@@ -474,7 +474,11 @@ public String  ACEITARCAMPANHA (@PathVariable String cod) {
         Optional<Produto> list = parametros.select();
         return new ResponseEntity<>(list, HttpStatus.valueOf(202));
     }
-
+    @GetMapping("/select/{id}")
+    public ResponseEntity<?> findCode1(@PathVariable String id) {
+        Optional<Produto> list = parametros.select1(id);
+        return new ResponseEntity<>(list, HttpStatus.valueOf(202));
+    }
     @PostMapping("/set")
     public ParametrosRequest salvarr(@RequestBody ParametrosRequest loginss) {
         Produto entidade = loginss.toModel();

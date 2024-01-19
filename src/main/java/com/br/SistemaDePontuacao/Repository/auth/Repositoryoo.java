@@ -28,24 +28,24 @@ public interface Repositoryoo extends CrudRepository<Produto, Long> {
     @Query(value = " SELECT * FROM parametros", nativeQuery = true)
     Optional<Produto> select();
 
-
-
+    @Query(value = " SELECT * FROM parametros1  where id=?1", nativeQuery = true)
+    Optional<Produto> select1(String id);
     @Query(value = " SELECT * FROM parametros1 where id=?1", nativeQuery = true)
     Optional<Produto> selectParametros(String id);
 
     @Transactional
     @Modifying(clearAutomatically = true, flushAutomatically = true)
-    @Query(value = "UPDATE parametros1 SET fatordivisao = ?1 where id=?1", nativeQuery = true)
+    @Query(value = "UPDATE parametros1 SET fatordivisao = ?1 where id=?2", nativeQuery = true)
     Integer fatordivisaoParametros(String fatordivisao, String id);
 
     @Transactional
     @Modifying(clearAutomatically = true, flushAutomatically = true)
-    @Query(value = "UPDATE parametros1 SET dtfim = ?1 where id= ?1", nativeQuery = true)
+    @Query(value = "UPDATE parametros1 SET dtfim = ?1 where id= ?2", nativeQuery = true)
     Integer fimParametros(String dtfim, String id);
 
     @Transactional
     @Modifying(clearAutomatically = true, flushAutomatically = true)
-    @Query(value = "UPDATE parametros1 SET dtinicio = ?1 where id=?1", nativeQuery = true)
+    @Query(value = "UPDATE parametros1 SET dtinicio = ?1 where id=?2", nativeQuery = true)
     Integer inicioParametros(String dtinicio, String id);
 
 }
